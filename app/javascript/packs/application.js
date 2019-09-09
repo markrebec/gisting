@@ -16,16 +16,9 @@
 // const imagePath = (name) => images(name, true)
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-
-const Hello = props => (
-  <h1>Hello World!</h1>
-)
+import { render } from 'react-dom'
+import App from 'components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
+  render(<App />, document.body.appendChild(document.createElement('div')))
 })
