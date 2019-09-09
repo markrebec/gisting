@@ -8,5 +8,9 @@ module Types
     field :user, Types::UserType, null: false
     field :created_at, String, null: true
     field :updated_at, String, null: true
+
+    def description
+      object.description || object.blobs.first.try(:filename)
+    end
   end
 end
