@@ -10,13 +10,12 @@ module Types
       Gist.listed
     end
 
-    field :user, Types::UserType, null: false do
-      description "Find a user by ID"
-      argument :id, ID, required: true
+    field :me, Types::UserType, null: true do
+      description "Return the authenticated user"
     end
 
-    def user(id:)
-      User.find(id)
+    def me
+      context[:current_user]
     end
   end
 end

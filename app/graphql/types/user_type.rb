@@ -7,5 +7,6 @@ module Types
     field :id, ID, null: false
     field :username, String, null: false
     field :email, String, null: false
+    field :gists, [Types::GistType], null: true
   end
 end
