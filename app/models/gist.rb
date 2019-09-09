@@ -1,6 +1,6 @@
 class Gist < ApplicationRecord
   validates :user, presence: true
-  validates :blobs, length: { minimum: 1 }
+  validates_associated :blobs
 
   belongs_to :user
   has_many :blobs, dependent: :destroy
