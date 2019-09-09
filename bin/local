@@ -1,0 +1,14 @@
+#!/usr/bin/env osascript
+
+tell application "iTerm2"
+  tell first session of current tab of current window
+    set name to "RAILS"
+    write text "bundle exec rails s"
+    split vertically with default profile
+  end tell
+
+  tell second session of current tab of current window
+    set name to "WEBPACK"
+    write text "./bin/webpack-dev-server"
+  end tell
+end tell
