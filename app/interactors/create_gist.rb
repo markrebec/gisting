@@ -5,7 +5,8 @@ class CreateGist
     context.gist = Gist.new(
       description: context.description,
       privacy: context.privacy,
-      user: context.user
+      user: context.user,
+      blobs_attributes: context.blobs
     )
     context.gist.save!
   rescue => e
