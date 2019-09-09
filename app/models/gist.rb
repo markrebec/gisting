@@ -11,4 +11,8 @@ class Gist < ApplicationRecord
     unlisted: 50,
     listed: 100
   }
+
+  scope :hidden, -> { where(privacy: :hidden) }
+  scope :unlisted, -> { where(privacy: :unlisted) }
+  scope :listed, -> { where(privacy: :listed) }
 end

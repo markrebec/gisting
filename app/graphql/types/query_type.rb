@@ -7,7 +7,7 @@ module Types
       description: "List all public gists"
 
     def gists
-      Gist.all
+      Gist.listed
     end
 
     field :user, Types::UserType, null: false do
