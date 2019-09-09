@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe Gist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # no custom functionality, just standard activerecord
 end
