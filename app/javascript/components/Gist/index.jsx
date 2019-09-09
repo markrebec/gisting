@@ -2,7 +2,6 @@ import React from 'react'
 import Blob from 'components/Blob'
 
 export default ({gist}) => <div>
-  <p>{gist.description}</p>
-  <p>{gist.privacy}</p>
-  {gist.blobs.map(blob => <Blob blob={blob} />)}
+  <p><strong>[{gist.privacy}]</strong> {gist.description}</p>
+  {gist.blobs.map(blob => <Blob key={blob.id} blob={blob} />)}
 </div>

@@ -1,4 +1,8 @@
 import React from 'react'
-import Gist from 'components/Gist'
+import { ApolloProvider } from '@apollo/react-hooks'
+import apollo from 'utilities/apollo'
+import Home from 'components/Home'
 
-export default props => <div><Gist gist={{description: 'I am a gist', privacy: 'hidden', blobs: [{filename: 'test.rb', body: 'foo bar baz'}, {filename: 'other.rb', body: 'another file'}]}}/></div>
+export default props => <ApolloProvider client={apollo}>
+  <Home />
+</ApolloProvider>
