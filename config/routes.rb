@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   post "/graphql", to: "graphql#execute"
   mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql" if Rails.env.development?
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'react#root'
+  get "/gists/:id", to: 'react#gist'
+  get "/gists/:gist_id/:id", to: 'react#blob'
 end
