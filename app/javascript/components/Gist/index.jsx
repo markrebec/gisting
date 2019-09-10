@@ -17,9 +17,7 @@ const Wrapper = styled.div`
   margin-bottom: 30px;
 `
 
-export const Gist = ({gist, children}) => {
-  console.log(children && children.length)
-  return (
+export const Gist = ({gist, children}) => (
   <Wrapper className="border border-light">
     <Title>
       <Link to={`/${gist.owner.username}`}>
@@ -56,8 +54,7 @@ export const Gist = ({gist, children}) => {
       </div>
     }
   </Wrapper>
-  )
-}
+)
 
 export const GistRoute = ({match}) => {
   const { loading, error, data } = useQuery(gistQuery, {
