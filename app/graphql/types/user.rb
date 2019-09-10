@@ -12,5 +12,11 @@ module Types
       # authentication, authorization and scoping
       context[:current_user] == object ? object.email : nil
     end
+
+    def gists
+      scope = object.gists.recent
+      scope = scope.listed unless context[:current_user] == object
+      scope
+    end
   end
 end
