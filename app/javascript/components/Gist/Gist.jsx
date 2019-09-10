@@ -35,7 +35,7 @@ export default ({gist, children, preview}) => (
     }
 
     {
-      ((gist.blobs && gist.blobs.length < gist.blobCount) || (children && React.Children.count(children) < gist.blobCount)) &&
+      preview && ((gist.blobs && gist.blobs.length < gist.blobCount) || (children && React.Children.count(children) < gist.blobCount)) &&
       <div className="text-center">
         <Link to={`/${gist.owner.username}/${gist.id}`}>
           And {(gist.blobs && gist.blobCount - gist.blobs.length) || (children && gist.blobCount - React.Children.count(children))} more files
