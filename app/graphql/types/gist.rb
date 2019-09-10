@@ -51,5 +51,13 @@ module Types
       scope = scope.limit(limit) if limit
       scope
     end
+
+    def created_at
+      object.created_at.iso8601
+    end
+
+    def updated_at
+      object.updated_at.iso8601
+    end
   end
 end

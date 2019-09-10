@@ -8,9 +8,14 @@ module Types
     field :version, Integer, null: false
     field :comment, String, null: true
     field :audited_changes, Types::Auditable, null: false
+    field :created_at, String, null: true
 
     def audited_changes
       object.auditable_type.constantize.new(object.audited_changes)
+    end
+
+    def created_at
+      object.created_at.iso8601
     end
   end
 end
