@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import gistQuery from 'queries/gist'
 import Blob from 'components/Blob'
 
 export const Gist = ({gist, children}) => (
@@ -22,31 +23,12 @@ export const Gist = ({gist, children}) => (
   </div>
 )
 
-// TODO move graphql queries into their own files
 export const GistRoute = ({match}) => {
-  const { loading, error, data } = useQuery(gql`
-    query Gist($id: ID!) {
-      gist(id: $id) {
-        id
-        description
-        privacy
-        isOwner
-        createdAt
-        updatedAt
-        user {
-          username
-        }
-        blobs {
-          id
-          filename
-          body
-          createdAt
-          updatedAt
-        }
-      }
+  const { loading, error, data } = useQuery(gistQuery, {
+    variables: {
+      id: match.params.id
     }
-  `,
-  { variables: { id: match.params.id} })
+  })
 
   if (loading) return null
   if (error) return <p>Error!</p>

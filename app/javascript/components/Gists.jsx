@@ -1,31 +1,11 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import gistsQuery from 'queries/gists'
 import Gist from 'components/Gist'
 
-// TODO move graphql queries into their own files
 export default props => {
-  const { loading, error, data } = useQuery(gql`
-    {
-      gists {
-        id
-        description
-        privacy
-        createdAt
-        updatedAt
-        user {
-          username
-        }
-        blobs {
-          id
-          filename
-          body
-          createdAt
-          updatedAt
-        }
-      }
-    }
-  `)
+  const { loading, error, data } = useQuery(gistsQuery)
 
   if (loading) return null
   if (error) return <p>Error!</p>

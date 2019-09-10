@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import blobQuery from 'queries/blob'
 import Gist from 'components/Gist'
 
 const Header = styled.div`
@@ -38,31 +39,13 @@ export const Blob = ({gist, blob}) => <div>
   </Body>
 </div>
 
-// TODO move graphql queries into their own files
 export const BlobRoute = ({match}) => {
-  const { loading, error, data } = useQuery(gql`
-    query Blob($gist_id: ID!, $id: ID!) {
-      gist(id: $gist_id) {
-        id
-        description
-        privacy
-        isOwner
-        createdAt
-        updatedAt
-        user {
-          username
-        }
-        blob(id: $id) {
-          id
-          filename
-          body
-          createdAt
-          updatedAt
-        }
-      }
+  const { loading, error, data } = useQuery(blobQuery, {
+    variables: {
+      gist_id: match.params.gist_id,
+      id: match.params.id
     }
-  `,
-  { variables: { gist_id: match.params.gist_id, id: match.params.id } })
+  })
 
   if (loading) return null
   if (error) return <p>Error!</p>
