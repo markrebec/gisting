@@ -1,20 +1,40 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+const Header = styled.div`
+  padding: 10px 5px;
+`
+
+const Title = styled.h4`
+  margin: 0;
+  padding: 0;
+`
+
+const Body = styled.div`
+  padding: 10px;
+  margin-bottom: 10px;
+`
+
+const Code = styled.pre`
+  margin: 0;
+  padding: 0;
+`
+
 export const Blob = ({gist, blob}) => <div>
-  <div className="border-left border-top border-right border-light">
-    <h4>
+  <Header className="border-left border-top border-right border-light">
+    <Title>
       <Link to={`/gists/${gist.id}/${blob.id}`}>
         <code>{blob.filename}</code>
       </Link>
-    </h4>
-  </div>
+    </Title>
+  </Header>
 
-  <div className="bg-light">
-    <pre>{blob.body}</pre>
-  </div>
+  <Body className="bg-light">
+    <Code>{blob.body}</Code>
+  </Body>
 </div>
 
 // TODO move graphql queries into their own files
