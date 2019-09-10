@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import gistQuery from 'queries/gist'
 import Gist from './Gist'
+import Form from './Form'
 
-export default ({match}) => {
+class Wrapper extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { editing: false }
+  }
+
+  render() {
+    if (this.state.editing) {
+      return <Form gist={this.props.data.gist} />
+    } else {
+      return <Gist gist={this.props.data.gist} />
+    }
+  }
+}
+
+export default (props) => {
   const { loading, error, data } = useQuery(gistQuery, {
     variables: {
-      id: match.params.id
+      id: props.match.params.id
     }
   })
 
   if (loading) return null
   if (error) return <p>Error!</p>
 
-  return <Gist gist={data.gist} />
+  return <Wrapper {...props} data={data} />
 }
