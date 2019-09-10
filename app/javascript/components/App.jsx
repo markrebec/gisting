@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ApolloProvider } from '@apollo/react-hooks'
 import apollo from 'utilities/apollo'
 import { Container, Row, Col } from 'reactstrap'
@@ -18,9 +18,10 @@ export default props => <ApolloProvider client={apollo}>
       <Row>
         <Col>
           <Route path="/" exact component={Home} />
-          <Route path="/gists" exact component={Gists} />
-
-          <Route path="/:owner" exact component={Owner} />
+          <Switch>
+            <Route path="/gists" exact component={Gists} />
+            <Route path="/:owner" exact component={Owner} />
+          </Switch>
           <Route path="/:owner/:id" exact component={Gist} />
           <Route path="/:owner/:gist_id/:id" exact component={Blob} />
         </Col>
