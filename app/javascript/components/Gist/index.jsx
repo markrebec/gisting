@@ -18,8 +18,14 @@ const Wrapper = styled.div`
   margin-bottom: 50px;
 `
 
+const Description = styled.p`
+  margin-bottom: 15px;
+`
+
 export const Gist = ({gist, children}) => (
   <Wrapper className="border border-light">
+    <Badge color="secondary" className="float-right">{gist.privacy}</Badge>
+
     <Title>
       <Link to={`/${gist.owner.username}`}>
         {gist.owner.username}
@@ -30,15 +36,13 @@ export const Gist = ({gist, children}) => (
       </Link>
     </Title>
 
-    <p>{gist.description || <em className="text-muted">No description provided.</em>}</p>
-
-    <p className="text-muted">
-      <strong>{gist.blobCount} files</strong>
-      &nbsp;
-      <Badge color="secondary">{gist.privacy}</Badge>
-      &nbsp;
+    <p className="text-muted float-right">
+      <Link to={`/${gist.owner.username}/${gist.id}`}><strong>{gist.blobCount} files</strong></Link>
+      &nbsp;/&nbsp;
       <span>{moment(gist.updatedAt).fromNow()}</span>
     </p>
+
+    <Description>{gist.description || <em className="text-muted">No description provided.</em>}</Description>
 
     {
       ( gist.blobs &&
