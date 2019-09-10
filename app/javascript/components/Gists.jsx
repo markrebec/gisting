@@ -9,5 +9,5 @@ export default props => {
   if (loading) return null
   if (error) return <p>Error!</p>
 
-  return data.gists.map(gist => <Gist key={gist.id} gist={gist} />)
+  return data.gists.map(gist => <Gist key={gist.id} gist={gist} preview />)
 }

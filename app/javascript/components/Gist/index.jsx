@@ -22,7 +22,7 @@ const Description = styled.p`
   margin-bottom: 15px;
 `
 
-export const Gist = ({gist, children}) => (
+export const Gist = ({gist, children, preview}) => (
   <Wrapper className="border border-light">
     <Badge color="secondary" className="float-right">{gist.privacy}</Badge>
 
@@ -46,7 +46,7 @@ export const Gist = ({gist, children}) => (
 
     {
       ( gist.blobs &&
-        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} preview />) ) ||
+        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} preview={preview} />) ) ||
       children
     }
 

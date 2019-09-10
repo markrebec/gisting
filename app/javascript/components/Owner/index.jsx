@@ -22,6 +22,7 @@ export default ({match}) => {
   if (loading) return null
   if (error) return <p>Error!</p>
 
+  // TODO clean up some of the duplication and rendering of lists below
   return (
     <div>
       <Row>
@@ -32,13 +33,13 @@ export default ({match}) => {
         </Col>
         <Col xs="8" sm="9" md="10">
           <h1>{data.user.username}</h1>
-          <div className="d-none d-lg-block">{data.user.gists.map(gist => <Gist key={gist.id} gist={gist} />)}</div>
+          <div className="d-none d-lg-block">{data.user.gists.map(gist => <Gist key={gist.id} gist={gist} preview />)}</div>
         </Col>
       </Row>
 
       <Row>
         <Col>
-          <div className="d-block d-lg-none">{data.user.gists.map(gist => <Gist key={gist.id} gist={gist} />)}</div>
+          <div className="d-block d-lg-none">{data.user.gists.map(gist => <Gist key={gist.id} gist={gist} preview />)}</div>
         </Col>
       </Row>
     </div>
