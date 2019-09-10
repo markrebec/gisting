@@ -10,11 +10,11 @@ import Blob from 'components/Blob'
 export const Gist = ({gist, children}) => (
   <div>
     <h2>
-      <Link to={`/${gist.user.username}`}>
-        <code>{gist.user.username}</code>
+      <Link to={`/${gist.owner.username}`}>
+        <code>{gist.owner.username}</code>
       </Link>
       &nbsp;/&nbsp;
-      <Link to={`/${gist.user.username}/${gist.id}`}>
+      <Link to={`/${gist.owner.username}/${gist.id}`}>
         <code>{gist.title}</code>
       </Link>
     </h2>

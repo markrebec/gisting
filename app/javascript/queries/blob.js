@@ -12,7 +12,7 @@ export default gql`
       auditCount
       createdAt
       updatedAt
-      user {
+      owner {
         username
       }
       blob(id: $id) {

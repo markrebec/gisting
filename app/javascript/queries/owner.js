@@ -16,7 +16,7 @@ export default gql`
         auditCount
         createdAt
         updatedAt
-        user {
+        owner {
           username
         }
         blobs(limit: 1) {

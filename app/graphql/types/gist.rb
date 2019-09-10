@@ -5,7 +5,7 @@ module Types
     field :privacy, String, null: false
     field :title, String, null: false
     field :description, String, null: true
-    field :user, Types::User, null: false
+    field :owner, Types::User, null: false
     field :created_at, String, null: true
     field :updated_at, String, null: true
     field :is_owner, Boolean, null: false
@@ -24,6 +24,10 @@ module Types
 
     def title
       object.blobs.chronological.first.try(:filename) || object.description
+    end
+
+    def owner
+      object.user
     end
 
     def is_owner
