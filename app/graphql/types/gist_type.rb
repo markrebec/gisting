@@ -8,6 +8,8 @@ module Types
     field :created_at, String, null: true
     field :updated_at, String, null: true
     field :is_owner, Boolean, null: false
+    field :audits, [Types::AuditType], null: false
+    field :audit_count, Integer, null: false
     field :blob_count, Integer, null: false
 
     field :blob, Types::BlobType, null: true do
@@ -25,6 +27,14 @@ module Types
 
     def is_owner
       object.user == context[:current_user]
+    end
+
+    def audit_count
+      object.own_and_associated_audits.count
+    end
+
+    def audits
+      object.own_and_associated_audits
     end
 
     def blob_count
