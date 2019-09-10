@@ -57,7 +57,7 @@ Audited.audit_class.as_user(user) do
     description: 'GraphQL Types',
     privacy: :listed,
     user: user,
-    blobs: Dir[Rails.root.join('app', 'graphql', 'types', '**/*_type.rb')].map { |type|
+    blobs: Dir[Rails.root.join('app', 'graphql', 'types', '**/*.rb')].map { |type|
       {filename: File.basename(type), body: File.read(type)}
     })
 end

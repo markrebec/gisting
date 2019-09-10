@@ -1,5 +1,5 @@
 module Types
-  class UserType < BaseObject
+  class User < BaseObject
     description "A user"
 
     # TODO in the real world, we'd put a little more effort into only
@@ -7,6 +7,6 @@ module Types
     field :id, ID, null: false
     field :username, String, null: false
     field :email, String, null: false
-    field :gists, [Types::GistType], null: true
+    field :gists, [Types::Gist], null: true
   end
 end

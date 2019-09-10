@@ -1,14 +1,14 @@
 module Types
-  class AuditableUnion < BaseUnion
+  class Auditable < BaseUnion
     description "Objects which may be audited"
-    possible_types Types::GistType, Types::BlobType
+    possible_types Types::Gist, Types::Blob
 
     def self.resolve_type(object, context)
       case object.class.name
         when 'Gist'
-          Types::GistType
+          Types::Gist
         when 'Blob'
-          Types::BlobType
+          Types::Blob
       end
     end
   end

@@ -1,22 +1,22 @@
 module Types
-  class GistType < BaseObject
+  class Gist < BaseObject
     description "A gist"
     field :id, ID, null: false
     field :privacy, String, null: false
     field :description, String, null: true
-    field :user, Types::UserType, null: false
+    field :user, Types::User, null: false
     field :created_at, String, null: true
     field :updated_at, String, null: true
     field :is_owner, Boolean, null: false
-    field :audits, [Types::AuditType], null: false
+    field :audits, [Types::Audit], null: false
     field :audit_count, Integer, null: false
     field :blob_count, Integer, null: false
 
-    field :blob, Types::BlobType, null: true do
+    field :blob, Types::Blob, null: true do
       argument :id, ID, required: true
     end
 
-    field :blobs, [Types::BlobType], null: true do
+    field :blobs, [Types::Blob], null: true do
       argument :offset, Integer, required: false
       argument :limit, Integer, required: false
     end
