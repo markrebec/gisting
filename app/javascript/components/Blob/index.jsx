@@ -4,12 +4,17 @@ import { gql } from 'apollo-boost'
 import { Link } from 'react-router-dom'
 
 export const Blob = ({gist, blob}) => <div>
-  <h4>
-    <Link to={`/gists/${gist.id}/${blob.id}`}>
-      <code>{blob.filename}</code>
-    </Link>
-  </h4>
-  <pre>{blob.body}</pre>
+  <div className="border-left border-top border-right border-light">
+    <h4>
+      <Link to={`/gists/${gist.id}/${blob.id}`}>
+        <code>{blob.filename}</code>
+      </Link>
+    </h4>
+  </div>
+
+  <div className="bg-light">
+    <pre>{blob.body}</pre>
+  </div>
 </div>
 
 // TODO move graphql queries into their own files
