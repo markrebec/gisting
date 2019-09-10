@@ -10,6 +10,7 @@ import Blob from 'components/Blob'
 
 const Title = styled.h2`
   font-size: 1.3em;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 `
 
 const Wrapper = styled.div`
@@ -21,11 +22,11 @@ export const Gist = ({gist, children}) => (
   <Wrapper className="border border-light">
     <Title>
       <Link to={`/${gist.owner.username}`}>
-        <code>{gist.owner.username}</code>
+        {gist.owner.username}
       </Link>
       <span className="text-black-50">/</span>
       <Link to={`/${gist.owner.username}/${gist.id}`}>
-        <code>{gist.title}</code>
+        {gist.title}
       </Link>
     </Title>
 

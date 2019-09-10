@@ -15,6 +15,7 @@ const Title = styled.h4`
   margin: 0;
   padding: 0;
   font-size: 1.1em;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 `
 
 const Body = styled.div`
@@ -30,7 +31,7 @@ export const Blob = ({gist, blob, preview}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
     <Title>
       <Link to={`/${gist.owner.username}/${gist.id}/${blob.id}`}>
-        <code>{blob.filename}</code>
+        {blob.filename}
       </Link>
     </Title>
   </Header>
