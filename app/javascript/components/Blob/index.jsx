@@ -7,7 +7,7 @@ import blobQuery from 'queries/blob'
 import Gist from 'components/Gist'
 
 const Header = styled.div`
-  padding: 10px 5px;
+  padding: 5px 10px;
 `
 
 const Title = styled.h4`
@@ -26,7 +26,7 @@ const Code = styled.pre`
 `
 
 export const Blob = ({gist, blob}) => <div>
-  <Header className="border-left border-top border-right border-light">
+  <Header className="border-left border-top border-right border-light bg-light">
     <Title>
       <Link to={`/gists/${gist.id}/${blob.id}`}>
         <code>{blob.filename}</code>
@@ -34,7 +34,7 @@ export const Blob = ({gist, blob}) => <div>
     </Title>
   </Header>
 
-  <Body className="border-left border-bottom border-right border-light bg-light">
+  <Body className="border-left border-bottom border-right border-light">
     <Code>{blob.body}</Code>
   </Body>
 </div>
