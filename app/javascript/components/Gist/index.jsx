@@ -15,7 +15,11 @@ export const Gist = ({gist, children}) => (
       &nbsp;
       <Badge color="secondary">{gist.privacy}</Badge>
     </h2>
-    <p className="text-muted">{gist.createdAt}</p>
+    <p className="text-muted">
+      <strong>{gist.blobCount} files</strong>
+      &nbsp;
+      <span>{gist.createdAt}</span>
+    </p>
     {
       (gist.blobs && gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />)) ||
       children
