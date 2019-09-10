@@ -8,6 +8,7 @@ module Types
     field :created_at, String, null: true
     field :updated_at, String, null: true
     field :is_owner, Boolean, null: false
+    field :blob_count, Integer, null: false
 
     field :blob, Types::BlobType, null: true do
       argument :id, ID, required: true
@@ -24,6 +25,10 @@ module Types
 
     def is_owner
       object.user == context[:current_user]
+    end
+
+    def blob_count
+      object.blobs.count
     end
 
     def blob(id:)
