@@ -11,6 +11,8 @@ class Gist < ApplicationRecord
     unlisted: 50,
     listed: 100
   }
+  
+  scope :recent, -> { order('created_at DESC, id DESC') }
 
   audited
   has_associated_audits
