@@ -14,6 +14,7 @@ const Header = styled.div`
 const Title = styled.h4`
   margin: 0;
   padding: 0;
+  font-size: 1.1em;
 `
 
 const Body = styled.div`
