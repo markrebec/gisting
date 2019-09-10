@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import hljs from 'highlight.js'
+import ReactMarkdown from 'react-markdown'
 
 const Pre = styled.pre`
   margin: 0;
   padding: 0;
+`
+
+const Markdown = styled(ReactMarkdown)`
+  padding: 10px;
 `
 
 export default class CodeBlock extends Component {
@@ -14,7 +19,7 @@ export default class CodeBlock extends Component {
   }
 
   componentDidMount() {
-    hljs.highlightBlock(this.refs.codeblock)
+    if (this.refs.codeblock) hljs.highlightBlock(this.refs.codeblock)
   }
 
   languageClass() {
@@ -31,10 +36,10 @@ export default class CodeBlock extends Component {
   }
 
   render() {
+    // TODO should rendering markdown vs code actually be the responsibility of the blob, not the code block?
     const parts = this.props.filename.split('.')
     if (parts[parts.length - 1] == 'md') {
-      // TODO render markdown
-      return <Pre><code ref="codeblock" className={this.languageClass()}>{this.props.children}</code></Pre>
+      return <Markdown source={this.props.children} />
     } else {
       return <Pre><code ref="codeblock" className={this.languageClass()}>{this.props.children}</code></Pre>
     }
