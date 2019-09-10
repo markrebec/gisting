@@ -3,4 +3,6 @@ class Blob < ApplicationRecord
 
   belongs_to :gist
   has_one :user, through: :gist
+
+  audited associated_with: :gist
 end

@@ -15,4 +15,7 @@ class Gist < ApplicationRecord
   scope :hidden, -> { where(privacy: :hidden) }
   scope :unlisted, -> { where(privacy: :unlisted) }
   scope :listed, -> { where(privacy: :listed) }
+
+  audited
+  has_associated_audits
 end
