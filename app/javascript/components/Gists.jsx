@@ -26,7 +26,7 @@ export default props => {
     }
   `)
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return null
   if (error) return <p>Error!</p>
 
   return data.gists.map(gist => <Gist key={gist.id} gist={gist} />)
