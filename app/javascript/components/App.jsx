@@ -7,8 +7,8 @@ import NavBar from 'components/NavBar'
 import Home from 'components/Home'
 import Gists from 'components/Gists'
 import Owner from 'components/Owner'
-import { GistRoute as Gist } from 'components/Gist'
-import { BlobRoute as Blob } from 'components/Blob'
+import { Route as Gist } from 'components/Gist'
+import { Route as Blob } from 'components/Blob'
 
 export default props => <ApolloProvider client={apollo}>
   <Router>
