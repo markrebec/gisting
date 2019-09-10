@@ -5,7 +5,7 @@ import { Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import Blob from 'components/Blob'
 
-export const Gist = ({gist}) => (
+export const Gist = ({gist, children}) => (
   <div>
     <h2>
       <Link to={`/gists/${gist.id}`}>
@@ -15,7 +15,10 @@ export const Gist = ({gist}) => (
       <Badge color="secondary">{gist.privacy}</Badge>
     </h2>
     <p className="text-muted">{gist.createdAt}</p>
-    {gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />)}
+    {
+      (gist.blobs && gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />)) ||
+      children
+    }
   </div>
 )
 

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Gist from 'components/Gist'
 
 const Header = styled.div`
   padding: 10px 5px;
@@ -66,7 +67,7 @@ export const BlobRoute = ({match}) => {
   if (loading) return null
   if (error) return <p>Error!</p>
 
-  return <Blob gist={data.gist} blob={data.gist.blob} />
+  return <Gist gist={data.gist}><Blob gist={data.gist} blob={data.gist.blob} /></Gist>
 }
 
 export default Blob
