@@ -10,7 +10,7 @@ module Types
     end
 
     def gists(offset:, limit:)
-      ::Gist.listed.offset(offset).limit(limit)
+      ::Gist.listed.recent.offset(offset).limit(limit)
     end
 
     field :gist, Types::Gist, null: false do
