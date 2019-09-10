@@ -19,6 +19,7 @@ export const Gist = ({gist}) => (
   </div>
 )
 
+// TODO move graphql queries into their own files
 export const GistRoute = ({match}) => {
   const { loading, error, data } = useQuery(gql`
     query Gist($id: ID!) {
@@ -26,6 +27,7 @@ export const GistRoute = ({match}) => {
         id
         description
         privacy
+        isOwner
         createdAt
         updatedAt
         user {

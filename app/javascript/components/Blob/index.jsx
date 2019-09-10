@@ -12,6 +12,7 @@ export const Blob = ({gist, blob}) => <div>
   <pre>{blob.body}</pre>
 </div>
 
+// TODO move graphql queries into their own files
 export const BlobRoute = ({match}) => {
   const { loading, error, data } = useQuery(gql`
     query Blob($gist_id: ID!, $id: ID!) {
@@ -19,6 +20,7 @@ export const BlobRoute = ({match}) => {
         id
         description
         privacy
+        isOwner
         createdAt
         updatedAt
         user {

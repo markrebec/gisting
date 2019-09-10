@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import Gist from 'components/Gist'
 
+// TODO move graphql queries into their own files
 export default props => {
   const { loading, error, data } = useQuery(gql`
     {
