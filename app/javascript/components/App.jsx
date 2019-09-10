@@ -9,7 +9,6 @@ import Gists from 'components/Gists'
 import { GistRoute as Gist } from 'components/Gist'
 import { BlobRoute as Blob } from 'components/Blob'
 
-// TODO move nested routes into Gists
 export default props => <ApolloProvider client={apollo}>
   <Router>
     <NavBar />
@@ -20,8 +19,8 @@ export default props => <ApolloProvider client={apollo}>
           <Route path="/" exact component={Home} />
           <Route path="/gists" exact component={Gists} />
 
-          <Route path="/gists/:id" exact component={Gist} />
-          <Route path="/gists/:gist_id/:id" exact component={Blob} />
+          <Route path="/:owner/:id" exact component={Gist} />
+          <Route path="/:owner/:gist_id/:id" exact component={Blob} />
         </Col>
       </Row>
     </Container>

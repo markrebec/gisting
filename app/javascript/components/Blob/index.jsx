@@ -23,7 +23,7 @@ const Body = styled.div`
 export const Blob = ({gist, blob}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
     <Title>
-      <Link to={`/gists/${gist.id}/${blob.id}`}>
+      <Link to={`/${gist.user.username}/${gist.id}/${blob.id}`}>
         <code>{blob.filename}</code>
       </Link>
     </Title>

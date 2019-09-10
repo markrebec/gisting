@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # this allows for setting custom headers, meta tags, etc. specifically for these objects (i.e. open graph
   # meta tags) in lieu of full-blown SSR, while still rendering and routing correctly on the frontend
-  get "/gists/:id", to: 'react#gist'
-  get "/gists/:gist_id/:id", to: 'react#blob'
+  get "/:owner/:id", to: 'react#gist'
+  get "/:owner/:gist_id/:id", to: 'react#blob'
 
   get '*unmatched_route', to: 'react#root'
 end

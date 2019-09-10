@@ -3,12 +3,18 @@ class ReactController < ApplicationController
 
   def root; end
 
+  def user
+    @user = User.find_by(username: params[:owner])
+  end
+
   def gist
-    @gist = Gist.find(params[:id])
+    @user = User.find_by(username: params[:owner])
+    @gist = @user.gists.find(params[:id])
   end
 
   def blob
-    @gist = Gist.find(params[:gist_id])
+    @user = User.find_by(username: params[:owner])
+    @gist = @user.gists.find(params[:gist_id])
     @blob = @gist.blobs.find(params[:id])
   end
 end

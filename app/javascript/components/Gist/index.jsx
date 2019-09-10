@@ -10,13 +10,15 @@ import Blob from 'components/Blob'
 export const Gist = ({gist, children}) => (
   <div>
     <h2>
-      <Link to={`/gists/${gist.id}`}>
+      <Link to={`/${gist.user.username}`}>
+        <code>{gist.user.username}</code>
+      </Link>
+      &nbsp;/&nbsp;
+      <Link to={`/${gist.user.username}/${gist.id}`}>
         <code>{gist.description}</code>
       </Link>
     </h2>
     <p className="text-muted">
-      <span>{gist.user.username}</span>
-      &nbsp;/&nbsp;
       <strong>{gist.blobCount} files</strong>
       &nbsp;
       <Badge color="secondary">{gist.privacy}</Badge>
