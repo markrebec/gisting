@@ -4,6 +4,7 @@ export default gql`
   query Gists {
     gists {
       id
+      title
       description
       privacy
       isOwner

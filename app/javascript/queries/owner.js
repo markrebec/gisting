@@ -5,6 +5,7 @@ export default gql`
     user(username: $username) {
       gists {
         id
+        title
         description
         privacy
         isOwner

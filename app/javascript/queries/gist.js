@@ -4,6 +4,7 @@ export default gql`
   query Gist($id: ID!) {
     gist(id: $id) {
       id
+      title
       description
       privacy
       isOwner

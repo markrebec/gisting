@@ -15,9 +15,10 @@ export const Gist = ({gist, children}) => (
       </Link>
       &nbsp;/&nbsp;
       <Link to={`/${gist.user.username}/${gist.id}`}>
-        <code>{gist.description}</code>
+        <code>{gist.title}</code>
       </Link>
     </h2>
+    <p>{gist.description || <em className="text-muted">No description provided.</em>}</p>
     <p className="text-muted">
       <strong>{gist.blobCount} files</strong>
       &nbsp;

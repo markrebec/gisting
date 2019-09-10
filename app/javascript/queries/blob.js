@@ -4,6 +4,7 @@ export default gql`
   query Blob($gist_id: ID!, $id: ID!) {
     gist(id: $gist_id) {
       id
+      title
       description
       privacy
       isOwner

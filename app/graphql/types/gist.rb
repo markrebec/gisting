@@ -3,6 +3,7 @@ module Types
     description "A gist"
     field :id, ID, null: false
     field :privacy, String, null: false
+    field :title, String, null: false
     field :description, String, null: true
     field :user, Types::User, null: false
     field :created_at, String, null: true
@@ -21,8 +22,8 @@ module Types
       argument :limit, Integer, required: false
     end
 
-    def description
-      object.description || object.blobs.first.try(:filename)
+    def title
+      object.blobs.chronological.first.try(:filename) || object.description
     end
 
     def is_owner
@@ -46,7 +47,7 @@ module Types
     end
 
     def blobs(offset: nil, limit: nil)
-      scope = object.blobs
+      scope = object.blobs.chronological
       scope = scope.offset(offset) if offset
       scope = scope.limit(limit) if limit
       scope
