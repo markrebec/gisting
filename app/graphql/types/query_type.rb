@@ -10,6 +10,15 @@ module Types
       Gist.listed
     end
 
+    field :gist, Types::GistType, null: false do
+      description "Find a gist by ID"
+      argument :id, ID, required: true
+    end
+
+    def gist(id:)
+      Gist.find(id)
+    end
+
     field :me, Types::UserType, null: true do
       description "Return the authenticated user"
     end
