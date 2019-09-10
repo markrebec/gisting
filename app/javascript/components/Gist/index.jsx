@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 import gistQuery from 'queries/gist'
 import Blob from 'components/Blob'
 
@@ -20,7 +21,7 @@ export const Gist = ({gist, children}) => (
       &nbsp;
       <Badge color="secondary">{gist.privacy}</Badge>
       &nbsp;
-      <span>{gist.createdAt}</span>
+      <span>{moment(gist.updatedAt).fromNow()}</span>
     </p>
     {
       ( gist.blobs &&
