@@ -10,10 +10,10 @@ const TextInput = styled.input`
 `
 
 export default ({gist, children, preview}) => <Wrapper className="border border-light">
-  <select className="float-right">
-    <option value="hidden" selected={gist.privacy == 'hidden'}>hidden</option>
-    <option value="unlisted" selected={gist.privacy == 'unlisted'}>unlisted</option>
-    <option value="listed" selected={gist.privacy == 'listed'}>listed</option>
+  <select className="float-right" defaultValue={gist.privacy}>
+    <option value="hidden">hidden</option>
+    <option value="unlisted">unlisted</option>
+    <option value="listed">listed</option>
   </select>
 
   <Title>
