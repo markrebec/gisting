@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap'
 import NavBar from 'components/NavBar'
 import Home from 'components/Home'
 import Gists from 'components/Gists'
+import Owner from 'components/Owner'
 import { GistRoute as Gist } from 'components/Gist'
 import { BlobRoute as Blob } from 'components/Blob'
 
@@ -19,6 +20,7 @@ export default props => <ApolloProvider client={apollo}>
           <Route path="/" exact component={Home} />
           <Route path="/gists" exact component={Gists} />
 
+          <Route path="/:owner" exact component={Owner} />
           <Route path="/:owner/:id" exact component={Gist} />
           <Route path="/:owner/:gist_id/:id" exact component={Blob} />
         </Col>
