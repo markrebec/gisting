@@ -8,6 +8,7 @@ export default gql`
       privacy
       isOwner
       blobCount
+      auditCount
       createdAt
       updatedAt
       user {

@@ -8,6 +8,7 @@ export default gql`
       privacy
       isOwner
       blobCount
+      auditCount
       createdAt
       updatedAt
       user {
@@ -17,6 +18,7 @@ export default gql`
         id
         filename
         body
+        auditCount
         createdAt
         updatedAt
       }
