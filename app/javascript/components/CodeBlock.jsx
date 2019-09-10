@@ -39,7 +39,7 @@ export default class CodeBlock extends Component {
     // TODO should rendering markdown vs code actually be the responsibility of the blob, not the code block?
     const parts = this.props.filename.split('.')
     if (parts[parts.length - 1] == 'md') {
-      return <Markdown source={this.props.children} />
+      return <Markdown source={this.props.children} className={this.props.className} style={this.props.style} />
     } else {
       return <Pre className={this.props.className} style={this.props.style}><code ref="codeblock" className={this.languageClass()}>{this.props.children}</code></Pre>
     }
