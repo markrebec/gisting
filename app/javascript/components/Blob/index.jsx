@@ -19,7 +19,7 @@ const Title = styled.h4`
 `
 
 const Body = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 `
 
 const StyledBlock = styled(CodeBlock)`

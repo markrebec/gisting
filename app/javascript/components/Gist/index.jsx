@@ -15,7 +15,7 @@ const Title = styled.h2`
 
 const Wrapper = styled.div`
   padding: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 `
 
 export const Gist = ({gist, children}) => (
