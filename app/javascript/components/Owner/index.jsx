@@ -25,12 +25,12 @@ export default ({match}) => {
   return (
     <div>
       <Row>
-        <Col sm="3" md="2">
+        <Col xs="4" sm="3" md="2">
           <ImageWrapper>
             <Image src="https://via.placeholder.com/200" />
           </ImageWrapper>
         </Col>
-        <Col sm="9" md="10">
+        <Col xs="8" sm="9" md="10">
           <h1>{data.user.username}</h1>
           <div className="d-none d-lg-block">{data.user.gists.map(gist => <Gist key={gist.id} gist={gist} />)}</div>
         </Col>
