@@ -9,6 +9,14 @@ module Types
     field :created_at, String, null: true
     field :updated_at, String, null: true
 
+    field :blob, Types::BlobType, null: true do
+      argument :id, ID, required: true
+    end
+
+    def blob(id:)
+      object.blobs.find(id)
+    end
+
     def description
       object.description || object.blobs.first.try(:filename)
     end
