@@ -12,8 +12,15 @@ const Title = styled.h2`
   font-size: 1.3em;
 `
 
-export const Gist = ({gist, children}) => (
-  <div>
+const Wrapper = styled.div`
+  padding: 15px;
+  margin-bottom: 30px;
+`
+
+export const Gist = ({gist, children}) => {
+  console.log(children && children.length)
+  return (
+  <Wrapper className="border border-light">
     <Title>
       <Link to={`/${gist.owner.username}`}>
         <code>{gist.owner.username}</code>
@@ -33,13 +40,24 @@ export const Gist = ({gist, children}) => (
       &nbsp;
       <span>{moment(gist.updatedAt).fromNow()}</span>
     </p>
+
     {
       ( gist.blobs &&
         gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />) ) ||
       children
     }
-  </div>
-)
+
+    {
+      ((gist.blobs && gist.blobs.length < gist.blobCount) || (children && React.Children.count(children) < gist.blobCount)) &&
+      <div className="text-center">
+        <Link to={`/${gist.owner.username}/${gist.id}`}>
+          And {(gist.blobs && gist.blobCount - gist.blobs.length) || (children && gist.blobCount - React.Children.count(children))} more files
+        </Link>
+      </div>
+    }
+  </Wrapper>
+  )
+}
 
 export const GistRoute = ({match}) => {
   const { loading, error, data } = useQuery(gistQuery, {

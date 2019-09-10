@@ -18,7 +18,7 @@ const Title = styled.h4`
 `
 
 const Body = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `
 
 export const Blob = ({gist, blob}) => <div>
