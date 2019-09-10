@@ -29,5 +29,14 @@ module Types
     def me
       context[:current_user]
     end
+
+    field :user, Types::User, null: false do
+      description "Find a user by username"
+      argument :username, String, required: true
+    end
+
+    def user(username:)
+      ::User.find_by(username: username)
+    end
   end
 end
