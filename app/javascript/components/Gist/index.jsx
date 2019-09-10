@@ -12,16 +12,19 @@ export const Gist = ({gist, children}) => (
       <Link to={`/gists/${gist.id}`}>
         <code>{gist.description}</code>
       </Link>
-      &nbsp;
-      <Badge color="secondary">{gist.privacy}</Badge>
     </h2>
     <p className="text-muted">
+      <span>{gist.user.username}</span>
+      &nbsp;/&nbsp;
       <strong>{gist.blobCount} files</strong>
+      &nbsp;
+      <Badge color="secondary">{gist.privacy}</Badge>
       &nbsp;
       <span>{gist.createdAt}</span>
     </p>
     {
-      (gist.blobs && gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />)) ||
+      ( gist.blobs &&
+        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />) ) ||
       children
     }
   </div>
