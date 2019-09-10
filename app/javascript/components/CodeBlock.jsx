@@ -41,7 +41,7 @@ export default class CodeBlock extends Component {
     if (parts[parts.length - 1] == 'md') {
       return <Markdown source={this.props.children} />
     } else {
-      return <Pre><code ref="codeblock" className={this.languageClass()}>{this.props.children}</code></Pre>
+      return <Pre className={this.props.className} style={this.props.style}><code ref="codeblock" className={this.languageClass()}>{this.props.children}</code></Pre>
     }
   }
 }

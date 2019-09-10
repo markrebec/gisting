@@ -21,7 +21,12 @@ const Body = styled.div`
   margin-bottom: 15px;
 `
 
-export const Blob = ({gist, blob}) => <div>
+const StyledBlock = styled(CodeBlock)`
+  max-height: ${({preview}) => preview ? "15.5em" : "auto"};
+  overflow: hidden;
+`
+
+export const Blob = ({gist, blob, preview}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
     <Title>
       <Link to={`/${gist.owner.username}/${gist.id}/${blob.id}`}>
@@ -31,7 +36,7 @@ export const Blob = ({gist, blob}) => <div>
   </Header>
 
   <Body className="border-left border-bottom border-right border-light">
-    <CodeBlock filename={blob.filename}>{blob.body}</CodeBlock>
+    <StyledBlock filename={blob.filename} preview={preview}>{blob.body}</StyledBlock>
   </Body>
 </div>
 

@@ -43,7 +43,7 @@ export const Gist = ({gist, children}) => {
 
     {
       ( gist.blobs &&
-        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />) ) ||
+        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} preview />) ) ||
       children
     }
 
