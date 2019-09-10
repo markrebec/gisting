@@ -6,12 +6,14 @@ export default gql`
       id
       description
       privacy
+      isOwner
+      blobCount
       createdAt
       updatedAt
       user {
         username
       }
-      blobs {
+      blobs(limit: 1) {
         id
         filename
         body

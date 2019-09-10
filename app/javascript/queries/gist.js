@@ -7,6 +7,7 @@ export default gql`
       description
       privacy
       isOwner
+      blobCount
       createdAt
       updatedAt
       user {
