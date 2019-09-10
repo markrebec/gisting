@@ -1,5 +1,5 @@
 class Blob < ApplicationRecord
-  validates :gist, presence: true
+  validates :gist, :filename, :body, presence: true
 
   belongs_to :gist
   has_one :user, through: :gist
