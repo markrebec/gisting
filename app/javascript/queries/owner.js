@@ -3,6 +3,9 @@ import { gql } from 'apollo-boost'
 export default gql`
   query Owner($username: String!) {
     user(username: $username) {
+      id
+      username
+      email
       gists {
         id
         title
