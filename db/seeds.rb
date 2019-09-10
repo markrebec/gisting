@@ -1,6 +1,13 @@
 user = User.create!(username: 'gisting', email: 'gisting@example.com', password: 'password')
 
 Audited.audit_class.as_user(user) do
+  readme = CreateGist.call(
+    description: 'README',
+    privacy: :listed,
+    user: user,
+    blobs: [{filename: 'README.md', body: File.read(Rails.root.join('README.md'))}]
+  )
+
   models = CreateGist.call(
     description: 'Application Models',
     privacy: :listed,
