@@ -15,7 +15,7 @@ export default gql`
       owner {
         username
       }
-      blobs(limit: 1) {
+      blobs(limit: 3) {
         id
         filename
         body
