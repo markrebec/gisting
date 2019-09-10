@@ -3,11 +3,14 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :gists, [Types::GistType], null: false,
-      description: "List all public gists"
+    field :gists, [Types::GistType], null: false do
+      description "List all public gists"
+      argument :offset, Integer, required: false, default_value: 0
+      argument :limit, Integer, required: false, default_value: 25, prepare: ->(limit, ctx) { [limit, 100].min }
+    end
 
-    def gists
-      Gist.listed
+    def gists(offset:, limit:)
+      Gist.listed.offset(offset).limit(limit)
     end
 
     field :gist, Types::GistType, null: false do
