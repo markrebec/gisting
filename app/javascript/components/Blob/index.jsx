@@ -33,7 +33,7 @@ export const Blob = ({gist, blob}) => <div>
     </Title>
   </Header>
 
-  <Body className="bg-light">
+  <Body className="border-left border-bottom border-right border-light bg-light">
     <Code>{blob.body}</Code>
   </Body>
 </div>
