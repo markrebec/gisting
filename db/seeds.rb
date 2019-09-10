@@ -46,6 +46,13 @@ Audited.audit_class.as_user(user) do
       {filename: component.split('javascript/components/').last, body: File.read(component)}
     })
 
+  webpacker = CreateGist.call(
+    description: 'Webpacker config',
+    privacy: :listed,
+    user: user,
+    blobs: [{filename: 'config/webpacker.yml', body: File.read(Rails.root.join('config', 'webpacker.yml'))}]
+  )
+
   types = CreateGist.call(
     description: 'GraphQL Types',
     privacy: :listed,
