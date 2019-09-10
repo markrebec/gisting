@@ -4,20 +4,7 @@ import { Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import Blob from 'components/Blob'
-
-const Title = styled.h2`
-  font-size: 1.3em;
-  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-`
-
-const Wrapper = styled.div`
-  padding: 15px;
-  margin-bottom: 50px;
-`
-
-const Description = styled.p`
-  margin-bottom: 15px;
-`
+import { Title, Wrapper, Description } from './Elements'
 
 export default ({gist, children, preview}) => (
   <Wrapper className="border border-light">
