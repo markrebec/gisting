@@ -9,7 +9,7 @@ const Pre = styled.pre`
 `
 
 const Markdown = styled(ReactMarkdown)`
-  padding: 10px;
+  padding: 20px;
 `
 
 export default class CodeBlock extends Component {
