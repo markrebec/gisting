@@ -30,9 +30,9 @@ export default ({gist, children, preview, toggleMode}) => (
     <Description>{gist.description || <em className="text-muted">No description provided.</em>}</Description>
 
     {
+      children ||
       ( gist.blobs &&
-        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} preview={preview} />) ) ||
-      children
+        gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} preview={preview} />) )
     }
 
     {
