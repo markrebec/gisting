@@ -15,16 +15,16 @@ const TextArea = styled.textarea`
   font-size: .9em;
 `
 
-export default ({filename, body, toggleMode}) => <div>
+export default ({filename, body, toggleMode, onChangeFilename, onChangeBody}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
     { toggleMode && <a className="float-right" onClick={toggleMode}>cancel</a> }
 
     <Title>
-      <input type="text" defaultValue={filename} />
+      <input type="text" defaultValue={filename} onChange={onChangeFilename}/>
     </Title>
   </Header>
 
   <Body className="border-left border-bottom border-right border-light">
-    <BodyText><TextArea defaultValue={body} /></BodyText>
+    <BodyText><TextArea defaultValue={body} onChange={onChangeBody} /></BodyText>
   </Body>
 </div>
