@@ -6,9 +6,10 @@ import moment from 'moment'
 import Blob from 'components/Blob'
 import { Title, Wrapper, Description } from './Elements'
 
-export default ({gist, children, preview}) => (
+export default ({gist, children, preview, toggleMode}) => (
   <Wrapper className="border border-light">
     <Badge color="secondary" className="float-right">{gist.privacy}</Badge>
+    { toggleMode && <a className="float-right" onClick={toggleMode}>edit</a> }
 
     <Title>
       <Link to={`/${gist.owner.username}`}>

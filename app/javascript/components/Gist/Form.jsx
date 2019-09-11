@@ -9,12 +9,13 @@ const TextInput = styled.input`
   width: 100%;
 `
 
-export default ({gist, children, preview}) => <Wrapper className="border border-light">
+export default ({gist, children, preview, toggleMode}) => <Wrapper className="border border-light">
   <select className="float-right" defaultValue={gist.privacy}>
     <option value="hidden">hidden</option>
     <option value="unlisted">unlisted</option>
     <option value="listed">listed</option>
   </select>
+  <a className="float-right" onClick={toggleMode}>cancel</a>
 
   <Title>
     <Link to={`/${gist.owner.username}`}>

@@ -9,11 +9,15 @@ const BodyText = styled.div`
 const TextArea = styled.textarea`
   width: 100%;
   border: none;
-  padding: 10px 5px;
+  padding: 5px;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size: .9em;
 `
 
-export default ({gist, blob, preview}) => <div>
+export default ({gist, blob, preview, toggleMode}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
+    <a className="float-right" onClick={toggleMode}>cancel</a>
+
     <Title>
       <input type="text" defaultValue={blob.filename} />
     </Title>

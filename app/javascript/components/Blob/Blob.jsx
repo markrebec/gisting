@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Header, Title, Body, StyledBlock } from './Elements'
 
-export default ({gist, blob, preview}) => <div>
+export default ({gist, blob, preview, toggleMode}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
+    { toggleMode && <a className="float-right" onClick={toggleMode}>edit</a> }
+
     <Title>
       <Link to={`/${gist.owner.username}/${gist.id}/${blob.id}`}>
         {blob.filename}
