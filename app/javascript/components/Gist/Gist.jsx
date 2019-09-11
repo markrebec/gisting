@@ -9,7 +9,6 @@ import { Title, Wrapper, Description } from './Elements'
 export default ({gist, children, preview, toggleMode}) => (
   <Wrapper className="border border-light">
     <Badge color="secondary" className="float-right">{gist.privacy}</Badge>
-    { toggleMode && <a className="float-right" onClick={toggleMode}>edit</a> }
 
     <Title>
       <Link to={`/${gist.owner.username}`}>
@@ -19,6 +18,7 @@ export default ({gist, children, preview, toggleMode}) => (
       <Link to={`/${gist.owner.username}/${gist.id}`}>
         {gist.title}
       </Link>
+      { toggleMode && <button onClick={toggleMode} className="btn btn-sm"><span className="fa fa-pen" /></button> }
     </Title>
 
     <p className="text-muted float-right">
