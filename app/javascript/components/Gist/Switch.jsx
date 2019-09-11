@@ -37,6 +37,9 @@ const Switch = ({gist}) => {
         &nbsp;
         <button className="btn btn-success">Save</button>
       </div>
+      <div>
+        <button className="btn btn-secondary">Add File</button>
+      </div>
     </div>
   } else {
     return <Gist gist={gist} toggleMode={toggleMode} />
