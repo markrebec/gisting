@@ -8,7 +8,6 @@ const BodyText = styled.div`
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 300px;
   border: none;
   padding: 5px;
   font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
@@ -25,6 +24,6 @@ export default ({filename, body, toggleMode, onChangeFilename, onChangeBody}) =>
   </Header>
 
   <Body className="border-left border-bottom border-right border-light">
-    <BodyText><TextArea defaultValue={body} onChange={onChangeBody} /></BodyText>
+    <BodyText><TextArea defaultValue={body} onChange={onChangeBody} rows={body.split("\n").length} /></BodyText>
   </Body>
 </div>
