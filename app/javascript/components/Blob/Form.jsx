@@ -14,14 +14,18 @@ const TextArea = styled.textarea`
   font-size: .9em;
 `
 
-export default ({filename, body, toggleMode, onChangeFilename, onChangeBody}) => <div>
-  <Header className="border-left border-top border-right border-light bg-light">
-    <Title>
-      <input type="text" defaultValue={filename} onChange={onChangeFilename}/>
-    </Title>
-  </Header>
+export default ({filename, body, toggleMode, onChangeFilename, onChangeBody}) => {
+  const bodyLines = body && body.split("\n")
+  const bodyRows = (bodyLines && bodyLines.length > 20 && bodyLines.length) || 20
+  return <div>
+    <Header className="border-left border-top border-right border-light bg-light">
+      <Title>
+        <input type="text" defaultValue={filename} onChange={onChangeFilename}/>
+      </Title>
+    </Header>
 
-  <Body className="border-left border-bottom border-right border-light">
-    <BodyText><TextArea defaultValue={body} onChange={onChangeBody} rows={body.split("\n").length} /></BodyText>
-  </Body>
-</div>
+    <Body className="border-left border-bottom border-right border-light">
+      <BodyText><TextArea defaultValue={body} onChange={onChangeBody} rows={bodyRows} /></BodyText>
+    </Body>
+  </div>
+}

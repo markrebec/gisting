@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import meQuery from 'queries/me'
 import { Jumbotron, Button } from 'reactstrap'
+import CreateGist from 'components/Gist/Create'
 
 export default props => {
   const { loading, error, data } = useQuery(meQuery)
@@ -21,6 +22,6 @@ export default props => {
       </p>
     </Jumbotron>
   } else {
-    return <h1>CREATE GIST FORM PLACEHOLDER</h1>
+    return <CreateGist />
   }
 }

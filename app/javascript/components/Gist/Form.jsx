@@ -46,7 +46,7 @@ export default ({id, privacy, owner, title, description, blobs, children, toggle
 
   {
     ( blobs &&
-      blobs.map((blob,b) => <Blob key={blob.id} {...blob} onChangeFilename={onChangeBlob(b, 'filename')} onChangeBody={onChangeBlob(b, 'body')} />) ) ||
+      blobs.map((blob,b) => <Blob key={blob.id || b} {...blob} onChangeFilename={onChangeBlob(b, 'filename')} onChangeBody={onChangeBlob(b, 'body')} />) ) ||
     children
   }
 </Wrapper>
