@@ -1,16 +1,16 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
-import meQuery from 'queries/me'
+import useCurrentUser from 'hooks/useCurrentUser'
 import { Jumbotron, Button } from 'reactstrap'
 import CreateGist from 'components/Gist/Create'
 
 export default props => {
-  const { loading, error, data } = useQuery(meQuery)
+  const { loading, error, user } = useCurrentUser()
 
   if (loading) return null
 
-  if (error || data.me == null) {
+  if (user) {
+    return <CreateGist />
+  } else {
     return <Jumbotron>
       <h1>Welcome!</h1>
       <p className="lead">Use the buttons below to sign in or sign up and start creating gists.</p>
@@ -21,7 +21,5 @@ export default props => {
         <Button color="primary" tag="a" href="/users/sign_up">Sign up</Button>
       </p>
     </Jumbotron>
-  } else {
-    return <CreateGist />
   }
 }
