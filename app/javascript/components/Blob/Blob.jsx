@@ -12,7 +12,7 @@ export default ({gist, blob, preview, toggleMode}) => <div>
       <Link to={`/${gist.owner.username}/${gist.id}/${blob.id}`}>
         {blob.filename}
       </Link>
-      { toggleMode && <button onClick={toggleMode} className="btn btn-sm"><span className="fa fa-pen" /></button> }
+      { gist.isOwner && toggleMode && <button onClick={toggleMode} className="btn btn-sm"><span className="fa fa-pen" /></button> }
     </Title>
   </Header>
 

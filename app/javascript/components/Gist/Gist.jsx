@@ -18,7 +18,7 @@ export default ({gist, children, preview, toggleMode}) => (
       <Link to={`/${gist.owner.username}/${gist.id}`}>
         {gist.title}
       </Link>
-      { toggleMode && <button onClick={toggleMode} className="btn btn-sm"><span className="fa fa-pen" /></button> }
+      { gist.isOwner && toggleMode && <button onClick={toggleMode} className="btn btn-sm"><span className="fa fa-pen" /></button> }
     </Title>
 
     <p className="text-muted float-right">

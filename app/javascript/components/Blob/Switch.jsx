@@ -14,7 +14,7 @@ const Switch = ({gist, blob}) => {
     setEditing(!editing)
   }
 
-  if (editing) {
+  if (gist.isOwner && editing) {
     return <Gist gist={gist}>
       <Form
         filename={filename}

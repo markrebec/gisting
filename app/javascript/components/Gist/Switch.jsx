@@ -23,7 +23,7 @@ const Switch = ({gist}) => {
     }
   }
 
-  if (editing) {
+  if (gist.isOwner && editing) {
     return <div>
       <Form {...gist}
         privacy={privacy}
