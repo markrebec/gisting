@@ -9,31 +9,45 @@ const TextInput = styled.input`
   width: 100%;
 `
 
-export default ({gist, children, preview, toggleMode}) => <Wrapper className="border border-light">
-  <select className="float-right" defaultValue={gist.privacy}>
+const FormTitle = ({id, owner, title}) => {
+  if (id) {
+    return (
+      <Title>
+        <Link to={`/${owner.username}`}>
+          {owner.username}
+        </Link>
+        <span className="text-black-50">/</span>
+        <Link to={`/${owner.username}/${id}`}>
+          {title}
+        </Link>
+      </Title>
+    )
+  } else {
+    return (
+      <Title>
+        New Gist
+      </Title>
+    )
+  }
+}
+
+export default ({id, privacy, owner, title, description, blobs, children, toggleMode}) => <Wrapper className="border border-light">
+  <select className="float-right" defaultValue={privacy}>
     <option value="hidden">hidden</option>
     <option value="unlisted">unlisted</option>
     <option value="listed">listed</option>
   </select>
-  <a className="float-right" onClick={toggleMode}>cancel</a>
+  { toggleMode && <a className="float-right" onClick={toggleMode}>cancel</a> }
 
-  <Title>
-    <Link to={`/${gist.owner.username}`}>
-      {gist.owner.username}
-    </Link>
-    <span className="text-black-50">/</span>
-    <Link to={`/${gist.owner.username}/${gist.id}`}>
-      {gist.title}
-    </Link>
-  </Title>
+  <FormTitle id={id} owner={owner} title={title} />
 
   <Description>
-    <TextInput type="text" defaultValue={gist.description} />
+    <TextInput type="text" defaultValue={description} />
   </Description>
 
   {
-    ( gist.blobs &&
-      gist.blobs.map(blob => <Blob key={blob.id} gist={gist} blob={blob} />) ) ||
+    ( blobs &&
+      blobs.map(blob => <Blob key={blob.id} {...blob} />) ) ||
     children
   }
 </Wrapper>

@@ -19,7 +19,7 @@ export default class Switch extends Component {
 
     if (this.state.editing) {
       return <Gist gist={gist}>
-        <Form gist={gist} blob={blob} toggleMode={this.toggleMode} />
+        <Form {...blob} toggleMode={this.toggleMode} />
       </Gist>
     } else {
       return <Gist gist={gist}>

@@ -15,7 +15,7 @@ export default class Switch extends Component {
 
   render() {
     if (this.state.editing) {
-      return <Form gist={this.props.gist} toggleMode={this.toggleMode} />
+      return <Form {...this.props.gist} toggleMode={this.toggleMode} />
     } else {
       return <Gist gist={this.props.gist} toggleMode={this.toggleMode} />
     }
