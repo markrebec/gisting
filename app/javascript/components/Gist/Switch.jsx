@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useMutation } from '@apollo/react-hooks'
+import updateGist from 'mutations/updateGist'
 import Gist from './Gist'
 import Form from './Form'
 
@@ -7,6 +9,9 @@ const Switch = ({gist}) => {
   const [description, setDescription] = useState(gist.description)
   const [privacy, setPrivacy] = useState(gist.privacy)
   const [blobs, setBlobs] = useState(gist.blobs.map((blob) => ({id: blob.id, filename: blob.filename, body: blob.body})))
+  const [saveGist, { savedGist }] = useMutation(updateGist, {
+    onCompleted: (data) => setEditing(false)
+  })
 
   const toggleMode = () => {
     setDescription(gist.description)
@@ -23,6 +28,17 @@ const Switch = ({gist}) => {
     }
   }
 
+  const submitGist = () => {
+    saveGist({
+      variables: {
+        id: gist.id,
+        description: description,
+        privacy: privacy,
+        blobs: blobs
+      }
+    })
+  }
+
   if (gist.isOwner && editing) {
     return <div>
       <Form {...gist}
@@ -35,7 +51,7 @@ const Switch = ({gist}) => {
       <div className="float-right">
         <button onClick={toggleMode} className="btn btn-outline-danger">Cancel</button>
         &nbsp;
-        <button className="btn btn-success">Save</button>
+        <button onClick={submitGist} className="btn btn-success">Save</button>
       </div>
       <div>
         <button className="btn btn-secondary">Add File</button>
