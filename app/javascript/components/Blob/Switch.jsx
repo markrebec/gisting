@@ -19,9 +19,13 @@ const Switch = ({gist, blob}) => {
       <Form
         filename={filename}
         body={body}
-        toggleMode={toggleMode}
         onChangeFilename={(evt) => setFilename(evt.currentTarget.value)}
         onChangeBody={(evt) => setBody(evt.currentTarget.value)} />
+      <div className="float-right">
+        <button onClick={toggleMode} className="btn btn-outline-danger">Cancel</button>
+        &nbsp;
+        <button className="btn btn-success">Save</button>
+      </div>
     </Gist>
   } else {
     return <Gist gist={gist}>

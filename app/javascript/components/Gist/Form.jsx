@@ -37,7 +37,6 @@ export default ({id, privacy, owner, title, description, blobs, children, toggle
     <option value="unlisted">unlisted</option>
     <option value="listed">listed</option>
   </select>
-  { toggleMode && <a className="float-right" onClick={toggleMode}>cancel</a> }
 
   <FormTitle id={id} owner={owner} title={title} />
 

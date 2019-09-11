@@ -16,8 +16,6 @@ const TextArea = styled.textarea`
 
 export default ({filename, body, toggleMode, onChangeFilename, onChangeBody}) => <div>
   <Header className="border-left border-top border-right border-light bg-light">
-    { toggleMode && <a className="float-right" onClick={toggleMode}>cancel</a> }
-
     <Title>
       <input type="text" defaultValue={filename} onChange={onChangeFilename}/>
     </Title>

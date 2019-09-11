@@ -24,14 +24,20 @@ const Switch = ({gist}) => {
   }
 
   if (editing) {
-    return <Form {...gist}
-      privacy={privacy}
-      description={description}
-      blobs={blobs}
-      toggleMode={toggleMode}
-      onChangePrivacy={(evt) => setPrivacy(evt.currentTarget.value)}
-      onChangeDescription={(evt) => setDescription(evt.currentTarget.value)}
-      onChangeBlob={updateBlob} />
+    return <div>
+      <Form {...gist}
+        privacy={privacy}
+        description={description}
+        blobs={blobs}
+        onChangePrivacy={(evt) => setPrivacy(evt.currentTarget.value)}
+        onChangeDescription={(evt) => setDescription(evt.currentTarget.value)}
+        onChangeBlob={updateBlob} />
+      <div className="float-right">
+        <button onClick={toggleMode} className="btn btn-outline-danger">Cancel</button>
+        &nbsp;
+        <button className="btn btn-success">Save</button>
+      </div>
+    </div>
   } else {
     return <Gist gist={gist} toggleMode={toggleMode} />
   }
