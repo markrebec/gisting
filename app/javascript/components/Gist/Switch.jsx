@@ -28,6 +28,12 @@ const Switch = ({gist}) => {
     }
   }
 
+  const addBlob = () => {
+    const updated = blobs.slice()
+    updated.push({filename: null, body: null})
+    setBlobs(updated)
+  }
+
   const submitGist = () => {
     saveGist({
       variables: {
@@ -54,7 +60,7 @@ const Switch = ({gist}) => {
         <button onClick={submitGist} className="btn btn-success">Save</button>
       </div>
       <div>
-        <button className="btn btn-secondary">Add File</button>
+        <button onClick={addBlob} className="btn btn-secondary">Add File</button>
       </div>
     </div>
   } else {
