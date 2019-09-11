@@ -9,6 +9,10 @@ export default gql`
       auditCount
       createdAt
       updatedAt
+      gist {
+        id
+        title
+      }
     }
   }
 `
