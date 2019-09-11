@@ -31,8 +31,8 @@ const FormTitle = ({id, owner, title}) => {
   }
 }
 
-export default ({id, privacy, owner, title, description, blobs, children, toggleMode}) => <Wrapper className="border border-light">
-  <select className="float-right" defaultValue={privacy}>
+export default ({id, privacy, owner, title, description, blobs, children, toggleMode, onChangePrivacy, onChangeDescription, onChangeBlob}) => <Wrapper className="border border-light">
+  <select className="float-right" defaultValue={privacy} onChange={onChangePrivacy}>
     <option value="hidden">hidden</option>
     <option value="unlisted">unlisted</option>
     <option value="listed">listed</option>
@@ -42,12 +42,12 @@ export default ({id, privacy, owner, title, description, blobs, children, toggle
   <FormTitle id={id} owner={owner} title={title} />
 
   <Description>
-    <TextInput type="text" defaultValue={description} />
+    <TextInput type="text" defaultValue={description} onChange={onChangeDescription} />
   </Description>
 
   {
     ( blobs &&
-      blobs.map(blob => <Blob key={blob.id} {...blob} />) ) ||
+      blobs.map((blob,b) => <Blob key={blob.id} {...blob} onChangeFilename={onChangeBlob(b, 'filename')} onChangeBody={onChangeBlob(b, 'body')} />) ) ||
     children
   }
 </Wrapper>

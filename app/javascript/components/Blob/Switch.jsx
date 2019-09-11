@@ -25,11 +25,13 @@ export default class Switch extends Component {
   }
 
   onChangeFilename(evt) {
-    this.setState({filename: evt.currentTarget.value})
+    const filename = evt.currentTarget.value
+    this.setState({filename: filename})
   }
 
   onChangeBody(evt) {
-    this.setState({body: evt.currentTarget.value})
+    const body = evt.currentTarget.value
+    this.setState({body: body})
   }
 
   render() {
