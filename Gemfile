@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'interactor-rails'
 gem 'graphql'
+gem 'graphql-batch'
 gem 'audited', '~> 4.9'
 
 group :development, :test do
