@@ -15,10 +15,11 @@ export default gql`
       owner {
         username
       }
-      blobs(limit: 3) {
+      blobs {
         id
         filename
         body
+        auditCount
         createdAt
         updatedAt
       }
