@@ -23,7 +23,7 @@ module Types
     end
 
     def title
-      object.blobs.chronological.first.try(:filename) || object.description
+      blobs.then { |results| results.first.try(:filename) || object.description }
     end
 
     def owner
