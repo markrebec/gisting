@@ -10,8 +10,16 @@ module Types
     field :audits, [Types::Audit], null: false
     field :audit_count, Integer, null: false
 
+    def gist
+      RecordLoader.for(::Gist).load(object.gist_id)
+    end
+
     def audit_count
-      object.audits.count
+      audits.then { |results| results.length }
+    end
+
+    def audits
+      AssociationLoader.for(::Blob, :audits).load(object)
     end
 
     def created_at

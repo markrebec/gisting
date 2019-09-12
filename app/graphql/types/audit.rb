@@ -10,6 +10,16 @@ module Types
     field :audited_changes, Types::Auditable, null: false
     field :created_at, String, null: true
 
+    def auditable
+      return nil unless object.auditable_id.present?
+      RecordLoader.for("::#{object.auditable_type}".constantize).load(object.auditable_id)
+    end
+
+    def associated
+      return nil unless object.associated_id.present?
+      RecordLoader.for("::#{object.associated_type}".constantize).load(object.associated_id)
+    end
+
     def audited_changes
       object.auditable_type.constantize.new(object.audited_changes)
     end

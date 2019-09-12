@@ -27,34 +27,43 @@ module Types
     end
 
     def owner
-      object.user
+      RecordLoader.for(::User).load(object.user_id)
     end
 
     def is_owner
-      object.user == context[:current_user]
+      object.user_id == context[:current_user].try(:id)
     end
 
     def audit_count
-      object.own_and_associated_audits.count
+      audits.then { |results| results.length }
     end
 
     def audits
-      object.own_and_associated_audits
+      Promise.all([
+        AssociationLoader.for(::Gist, :audits).load(object),
+        AssociationLoader.for(::Gist, :associated_audits).load(object),
+      ]).then do |results|
+        results.reduce(&:+)
+      end
     end
 
     def blob_count
-      object.blobs.count
+      AssociationLoader.for(::Gist, :blobs).load(object).then { |results| results.length }
     end
 
     def blob(id:)
-      object.blobs.find(id)
+      RecordLoader.for(::Blob, where: {gist_id: object.id}).load(id)
     end
 
     def blobs(offset: nil, limit: nil)
-      scope = object.blobs.chronological
-      scope = scope.offset(offset) if offset
-      scope = scope.limit(limit) if limit
-      scope
+      AssociationLoader.for(::Gist, :blobs).load(object).then do |results|
+        results = results.sort { |a,b| a.created_at == b.created_at ? a.id <=> b.id : a.created_at <=> b.created_at }
+        if limit
+          offset ||= 0
+          results = results.slice(offset, limit)
+        end
+        results
+      end
     end
 
     def created_at

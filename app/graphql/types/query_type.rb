@@ -19,7 +19,7 @@ module Types
     end
 
     def gist(id:)
-      ::Gist.find(id)
+      RecordLoader.for(::Gist).load(id)
     end
 
     field :me, Types::User, null: true do

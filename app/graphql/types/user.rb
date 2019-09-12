@@ -14,9 +14,11 @@ module Types
     end
 
     def gists
-      scope = object.gists.recent
-      scope = scope.listed unless context[:current_user] == object
-      scope
+      AssociationLoader.for(::User, :gists).load(object).then do |results|
+        results = results.select(&:listed?) unless context[:current_user] == object
+        results = results.sort_by(&:created_at).reverse
+        results
+      end
     end
   end
 end
